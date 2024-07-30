@@ -1,0 +1,35 @@
+<script>
+
+    // Membuat Game Tebak Tebakkan Angka Dengan While 1 sampe 3 
+
+    let maximum = parseInt(prompt("masukkan angka maksimal"));
+   
+    while (!maximum) {
+        maximum = parseInt(prompt("masukkan angka maksimal"));
+    }
+
+    const target = Math.floor(Math.random() * maximum) + 1;
+
+    console.log(target);
+
+    let guess = prompt("tebak angka antara 1 sampai " + maximum);
+
+    let i = 1;
+
+    while (parseInt(guess) !== target) {
+        if (parseInt(guess) > target) {
+            guess = prompt("kebanyakan");
+        } else {
+            guess = prompt("kekecilan");
+        }
+        i++;
+    }
+    
+    console.log("Anda sudah menebak angka sebanyak", i);
+    alert("tebakan anda benar");
+    console.log("tebakan anda benar");
+
+
+
+  
+</script>
