@@ -1,0 +1,35 @@
+<script>
+    // Kata Kunci Break Untuk Memberhentikan Perulangan
+
+    let i = 0;
+    while (i < 10) {
+        console.log(i);
+        if (i == 5) {
+            break;
+        }
+        i++;
+    }
+
+    console.log("Selesai");
+
+    let input = prompt("masukkan password");
+    while (true) {
+        if (input.toLowerCase() == "admin") {
+            console.log("password benar");
+            break;
+        }   
+        input = prompt("masukkan password");
+    }
+
+    // Penggunaan Break di For Loop
+
+    for (let i = 0; i < 10; i++) {
+        if (i == 5) {
+            break;
+        }
+        console.log(i);
+    }
+
+    console.log("selesai");
+
+</script>
