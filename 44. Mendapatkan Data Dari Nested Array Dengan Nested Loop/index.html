@@ -1,0 +1,19 @@
+<script>
+    // Mendapatkan Data Dari Nested Array Dengan Nested Loop
+
+    let namaSiswa = [
+        ["Audyari", "Wiyono", "Jaya", "Kencana"],
+        ["Dewi", "Sri", "Rini", "Yanti"],
+        ["Fikri", "Sulastri", "Andi", "Fikri"]
+    ];
+
+    let nomorUrut = 1;
+
+    for (let i = 0; i < namaSiswa.length; i++) {
+        for (let j = 0; j < namaSiswa[i].length; j++) {
+            console.log(`siswa ke ${nomorUrut}, ${namaSiswa[i][j]}`);
+            nomorUrut++;
+        }
+    }
+
+</script>
