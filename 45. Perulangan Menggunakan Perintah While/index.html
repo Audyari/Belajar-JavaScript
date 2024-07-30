@@ -1,0 +1,36 @@
+<script>
+
+    // Perulangan Menggunakan Perintah While
+
+    let i = 0;
+
+    while (i < 10) {
+        console.log(i);
+        i++;
+    }
+
+    console.log("Selesai");
+
+    // Perulangan Menggunakan Perintah While untuk Password
+
+    const password = "123";
+
+    let input = prompt("Enter password");
+    let attempts = 0;
+
+    while (input !== password) {
+        attempts++;
+        input = prompt("Enter password");
+    }
+
+    if (attempts < 3) {
+        console.log("Password is correct");
+    } else {
+        console.log("anda sudah salah 3 kali");
+    }
+
+    console.log("Selesai");
+
+
+
+</script>
