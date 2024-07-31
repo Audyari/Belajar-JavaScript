@@ -1,0 +1,65 @@
+<script>
+    // Melakukan Perulangan Pada Object Dengan Elegan For In
+
+    let mahasiswa = {
+        nama: "Audyari Wiyono",
+        umur: 41,
+        email: "6Yn8t@example.com",
+        jurusan: "Teknik Informatika",
+        alamat: {
+            kota: "Pondok Gede",
+            provinsi: "Jawa Tengah"
+        }
+    }
+
+    for (let key in mahasiswa) {
+        if (typeof mahasiswa[key] === 'object') {
+            for (let subKey in mahasiswa[key]) {
+                console.log("Tipe Object: ");
+                console.log(`${key}.${subKey}: ${mahasiswa[key][subKey]}`);
+            }
+        } else {
+            console.log("Tipe String: ");
+            console.log(`${key}: ${mahasiswa[key]}`);
+        }
+    }
+
+    console.log(mahasiswa);
+
+    let NilaiSiswa = {
+        Audyari: 90,
+        Wiyono: 80,
+        Jaya: 70,
+        Kencana: 60,
+        Asep: 50,
+        Budi: 40
+
+    };
+
+    for (let Nilai in NilaiSiswa) {
+        console.log(Nilai + " Nilai: " + NilaiSiswa[Nilai]);
+    }
+
+    // nilai Rata-Rata Siswa    
+
+    let totalNilai = 0;
+    for (let Nilai in NilaiSiswa) {
+        totalNilai += NilaiSiswa[Nilai];
+    }
+
+    console.log("Nilai rata-rata : ",totalNilai / Object.keys(NilaiSiswa).length);
+
+    // ubah data objek jadi array
+
+    let data = Object.entries(NilaiSiswa);
+    console.log("data : ",data);
+
+    //menampilkan data Array
+
+    for (let i = 0; i < data.length; i++) {
+        console.log(data[i][0] + " Nilai: " + data[i][1]);
+    }
+
+
+
+</script>
