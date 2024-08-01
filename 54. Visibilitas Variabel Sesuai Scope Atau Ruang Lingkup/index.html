@@ -1,0 +1,29 @@
+<script>
+    // Visibilitas Variabel Sesuai Scope Atau Ruang Lingkup
+
+    let nama = "John Doe";
+
+    console.log(nama);
+    
+    function cetakNama() {
+        let nama = "Ali";
+        console.log(nama);
+    }
+    
+    cetakNama();
+    
+    console.log(nama); // Output: John Doe
+
+
+    let programming = "javascript";
+
+    function cetakProgramming() {
+        programming = "python";
+        console.log(programming);
+    }
+    
+    cetakProgramming();
+    
+    console.log(programming);
+
+</script>
