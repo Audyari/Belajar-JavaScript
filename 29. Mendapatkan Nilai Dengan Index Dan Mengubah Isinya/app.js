@@ -11,3 +11,9 @@ array[1] = "Wiyono";
 
 array[12] = "Jaya";
 console.log(array);
+
+
+
+while (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+}
