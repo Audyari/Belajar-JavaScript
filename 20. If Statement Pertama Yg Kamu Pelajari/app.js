@@ -12,7 +12,7 @@ if (angka >= 0.5) {
 
 // Create an event listener for the button click
 function executeJavascript() {
-  let umur = 18;
+  let umur = null;
   let inputUmur = document.getElementById("inputUmur").value;
   umur = Number(inputUmur);
   if (umur >= 0) {

@@ -11,3 +11,6 @@ if (password.length >= 6) {
 }
 
 console.log(password.indexOf(" "));
+
+
+
