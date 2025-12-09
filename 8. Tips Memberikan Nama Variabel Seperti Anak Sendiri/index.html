@@ -1,6 +1,97 @@
 <script>
-    let namaLengkap = "Camel Case" //Camel Case
-    let NamaLengkap  = "Pascal Case" //Pascal Case
-    let nama_lengkap = "Snake Case" //Snake Case
-    let $variabel = "simbol" //simbol
+    // =======================================================
+    // Snippet: Tips Memberikan Nama Variabel Seperti Anak Sendiri
+    // Kode ini adalah panduan, bukan untuk dieksekusi fungsional.
+    // Buka Developer Tools (F12) dan lihat tab Console.
+    // =======================================================
+
+
+    console.clear();
+    console.log('%c--- Tips Penamaan Variabel yang Baik ---', 'font-weight: bold; color: blue; font-size: 16px;');
+
+    // --- 1. JELAS DAN DESKRIPTIF ---
+    // Nama variabel harus menjelaskan apa isinya. Jangan malu-malu membuat nama yang panjang.
+    console.group('\n1. Jelas dan Deskriptif');
+    // Salah (Tidak jelas):
+    let d = 10; // d itu apa? hari? distance? data?
+    let data = ['Budi', 'Ani']; // data apa?
+    // Benar (Jelas):
+    let daysUntilExpiration = 10;
+    let listOfUserNames = ['Budi', 'Ani'];
+    console.log('✅ Benar: daysUntilExpiration, listOfUserNames');
+    console.log('❌ Salah: d, data');
+    console.groupEnd();
+
+    // --- 2. GUNAKAN camelCase ---
+    // Ini adalah konvensi standar di JavaScript untuk variabel dan fungsi.
+    console.group('\n2. Gunakan camelCase');
+    let firstName = 'John'; // ✅ Benar
+    let isUserLoggedIn = true; // ✅ Benar
+    // let first_name = 'John'; // ❌ Salah (snake_case, biasa di Python/Ruby)
+    // let FirstName = 'John'; // ❌ Salah (PascalCase, biasa untuk Class/Konstruktor)
+    console.log('✅ Benar: firstName, isUserLoggedIn');
+    console.groupEnd();
+
+    // --- 3. HINDARI SINGKATAN YANG AMBIGU ---
+    // `usr` lebih sulit dibaca daripada `user`. Prioritaskan kejelasan.
+    console.group('\n3. Hindari Singkatan yang Ambigu');
+    // Salah (Sulit dimengerti):
+    let usrNm = 'Budi';
+    let prc = 15000;
+    // Benar (Mudah dibaca):
+    let userName = 'Budi';
+    let price = 15000;
+    console.log('✅ Benar: userName, price');
+    console.log('❌ Salah: usrNm, prc');
+    console.groupEnd();
+
+    // --- 4. UNTUK BOOLEAN, GUNAKAN AWALAN SEPERTI PERTANYAAN ---
+    // Ini membuat kode terasa seperti kalimat logis.
+    console.group('\n4. Penamaan untuk Boolean');
+    // Benar (Seperti pertanyaan/keadaan):
+    let isLoading = false;
+    let hasAdminAccess = true;
+    let canEditPost = false;
+    // Salah (Tidak jelas):
+    // let load = false;
+    // let admin = true;
+    console.log('✅ Benar: isLoading, hasAdminAccess');
+    console.groupEnd();
+
+    // --- 5. UNTUK FUNGSI, GUNAKAN VERBA (KATA KERJA) ---
+    // Nama fungsi harus menjelaskan apa yang dilakukannya.
+    console.group('\n5. Penamaan untuk Fungsi');
+    // Benar (Menggambarkan aksi):
+    function getUserData() { /* ... */ }
+    function calculateTotalPrice(items) { /* ... */ }
+    function handleSubmit(event) { /* ... */ }
+    // Salah (Menggambarkan benda):
+    // function userData() { /* ... */ }
+    // function totalPrice() { /* ... */ }
+    console.log('✅ Benar: getUserData(), calculateTotalPrice()');
+    console.groupEnd();
+
+    // --- 6. UNTUK KONSTANTA, GUNAKAN UPPER_SNAKE_CASE ---
+    // Konstanta adalah variabel yang nilainya tidak akan berubah.
+    console.group('\n6. Penamaan untuk Konstanta (const)');
+    const API_BASE_URL = 'https://api.example.com';
+    const MAX_FILE_SIZE_MB = 5;
+    const SECONDS_IN_A_MINUTE = 60;
+    console.log('✅ Benar: API_BASE_URL, MAX_FILE_SIZE_MB');
+    console.groupEnd();
+
+    // --- 7. HINDARI NAMA YANG SUDAH ADA DI JAVASCRIPT ---
+    // Jangan gunakan reserved keyword sebagai nama variabel.
+    console.group('\n7. Hindari Reserved Keyword');
+    // let let = 10; // ❌ ERROR!
+    // const const = 'hello'; // ❌ ERROR!
+    // var class = 'User'; // ❌ ERROR!
+    console.log('❌ Jangan gunakan: let, const, var, class, function, return, dll.');
+    console.groupEnd();
+
+
+    // --- KESIMPULAN ---
+    console.log('%c--- Kesimpulan ---', 'font-weight: bold; color: green; font-size: 16px;');
+    console.log('"Kode dibaca lebih sering daripada ditulis."');
+    console.log('Investasikan waktu Anda untuk memberi nama yang baik. Masa depan Anda (dan tim Anda) akan berterima kasih.');
 </script>
