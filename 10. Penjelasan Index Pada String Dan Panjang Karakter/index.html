@@ -1,16 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      const str = "Brave new world";
 
-      console.log(str.indexOf("w")); // 8
-      console.log(str.indexOf("B")); // 0
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // =======================================================
+    // Snippet: Penjelasan Index pada String dan Panjang Karakter
+    // Cara: Buka Developer Tools (F12) dan lihat tab Console.
+    // =======================================================
+
+
+    console.clear(); // Membersihkan console agar lebih rapi
+
+    // --- 1. KONSEP DASAR: PANJANG KARAKTER (.length) ---
+    // Properti .length mengembalikan jumlah total karakter dalam string, termasuk spasi.
+
+    let kalimat = 'Hello World';
+    console.log('String yang akan kita analisis:', kalimat);
+    console.log(`Panjang karakter (.length): ${kalimat.length}`); // Output: 11
+    console.log('Ingat: Panjang adalah 11, tapi index terakhir adalah 10!');
+
+
+    // --- 2. KONSEP DASAR: INDEX ---
+    // Index adalah posisi sebuah karakter dalam string. Index di JavaScript SELALU dimulai dari 0, bukan 1.
+    // Bayangkan seperti nomor rumah di sebuah jalan.
+
+    console.group('\n--- Visualisasi Index ---');
+    console.log('String:  H e l l o   W o r l d');
+    console.log('Index:   0 1 2 3 4 5 6 7 8 9 10');
+    console.groupEnd();
+
+
+    // --- 3. MENGAKSES KARAKTER MENGGUNAKAN INDEX ---
+    // Kita bisa mengakses karakter individual dengan menggunakan notasi kurung siku [index].
+
+    console.log('\n--- Mengakses Karakter ---');
+    console.log(`Karakter di index 0: "${kalimat[0]}"`); // Output: "H"
+    console.log(`Karakter di index 4: "${kalimat[4]}"`); // Output: "o" (spasi juga dihitung)
+    console.log(`Karakter di index 6: "${kalimat[6]}"`); // Output: "W"
+
+    // Mengakses karakter terakhir menggunakan .length - 1
+    let indexTerakhir = kalimat.length - 1;
+    console.log(`Index terakhir (indexTerakhir): "${kalimat[indexTerakhir]}"`); // Output: "d"
+
+    // Apa yang terjadi jika index tidak ada?
+    console.log(`Karakter di index 11 (tidak ada): "${kalimat[11]}"`); // Output: "undefined"
+
+
+    // --- 4. PRAKTEK: LOOPING MELALUI SETIAP KARAKTER ---
+    // Ini adalah penggunaan paling umum dari index dan .length.
+    // Kita bisa menggunakan loop `for` untuk melakukan sesuatu pada setiap karakter.
+
+    console.group('\n--- Looping Melalui Setiap Karakter ---');
+    for (let i = 0; i < kalimat.length; i++) {
+      // i akan bernilai dari 0 hingga 10
+      console.log(`Index i: "${kalimat[i]}"`);
+    }
+    console.groupEnd();
+
+
+    // --- 5. METODE YANG BERHUBUNGAN DENGAN INDEX ---
+    // JavaScript menyediakan metode bawaan untuk mencari index dari sebuah substring.
+
+    console.group('\n--- Metode Terkait Index ---');
+    let teksCari = 'mencari kata kunci di dalam kalimat';
+    console.log(`Teks: "teksCari"`);
+
+    // .indexOf(substring): Mengembalikan index pertama kali substring ditemukan.
+    console.log(`Index pertama "kata": ${teksCari.indexOf('kata')}`); // Output: 13
+    console.log(`Index pertama "a": ${teksCari.indexOf('a')}`); // Output: 5
+
+    // .lastIndexOf(substring): Mengembalikan index terakhir kali substring ditemukan.
+    console.log(`Index terakhir "a": ${teksCari.lastIndexOf('a')}`); // Output: 28
+
+    // Jika substring tidak ditemukan, hasilnya adalah -1.
+    console.log(`Index "tidakada": ${teksCari.indexOf('tidakada')}`); // Output: -1
+    console.groupEnd();
+
+
+    // --- KESIMPULAN ---
+    console.log('%c--- Kesimpulan ---', 'font-weight: bold; color: #28a745; font-size: 16px;');
+    console.log('1. .length adalah jumlah total karakter.');
+    console.log('2. Index adalah posisi karakter, SELALU dimulai dari 0.');
+    console.log('3. Index karakter terakhir selalu string.length - 1.');
+    console.log('4. Akses karakter dengan string[index].');
+  </script>
+</body>
+
 </html>
