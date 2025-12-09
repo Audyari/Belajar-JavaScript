@@ -1,19 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    
 
-    <script>
-      const contentString = "Hello, world";
-      const elem = document.createElement("P");
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-      elem.innerText = contentString;
-      document.body.appendChild(elem);
-    </script>
-  </body>
+<body>
+
+
+  <script>
+    // =======================================================
+    // Snippet: Mengenal Tipe Data String di JavaScript
+    // Cara: Buka Developer Tools (F12) dan lihat tab Console.
+    // =======================================================
+
+
+    console.clear(); // Membersihkan console agar lebih rapi
+
+    // --- 1. DEKLARASI STRING ---
+    // String adalah rangkaian karakter yang dibungkus dengan tanda kutip.
+    // Ada 3 cara: single quotes (''), double quotes (""), dan backticks (``).
+
+    let singleQuote = 'Halo, ini single quote';
+    let doubleQuote = "Halo, ini double quote";
+    let backticks = `Halo, ini backticks`;
+
+    console.log('Single Quote:', singleQuote);
+    console.log('Double Quote:', doubleQuote);
+    console.log('Backticks:', backticks);
+
+    // --- 2. TEMPLATE LITERALS (BACKTICKS) ---
+    // Keunggulan utama backticks adalah kemampuan untuk menyisipkan variabel dan ekspresi.
+    let nama = 'Budi';
+    let umur = 25;
+    let kalimat = `Nama saya nama dan umur saya umur tahun.`;
+    console.log('\nTemplate Literal:', kalimat);
+    // Bisa juga untuk ekspresi matematika
+    console.log(`Tahun depan umur saya ${umur + 1} tahun.`);
+
+    // --- 3. PROPERTI DAN METODE STRING ---
+    // String memiliki banyak properti dan metode bawaan yang sangat berguna.
+
+    const teks = '  Belajar JavaScript itu Menyenangkan!  ';
+    console.group('\n--- Properti & Metode String ---');
+    console.log('Teks asli:', teks);
+
+    // .length: Mengembalikan panjang string
+    console.log('Panjang teks (.length):', teks.length);
+
+    // .toUpperCase() dan .toLowerCase(): Mengubah huruf besar/kecil
+    console.log('Huruf besar (.toUpperCase()):', teks.toUpperCase());
+    console.log('Huruf kecil (.toLowerCase()):', teks.toLowerCase());
+
+    // .trim(): Menghapus spasi kosong di awal dan akhir string
+    console.log('Setelah di-trim (.trim()):', teks.trim());
+
+    // .includes(substring): Mengecek apakah string mengandung substring tertentu (mengembalikan true/false)
+    console.log('Apakah mengandung "JavaScript"?', teks.includes('JavaScript')); // true
+    console.log('Apakah mengandung "python"?', teks.includes('python')); // false
+
+    // .indexOf(substring): Mengembalikan indeks pertama kali substring ditemukan (jika tidak ada, -1)
+    console.log('Indeks "JavaScript":', teks.indexOf('JavaScript')); // 12
+    console.log('Indeks "python":', teks.indexOf('python')); // -1
+
+    // .slice(start, end): Mengambil bagian string dari indeks start hingga sebelum end
+    console.log('Slice [0, 7]:', teks.slice(0, 7)); // '  Belaj'
+    console.log('Slice [-13, -1]:', teks.slice(-13, -1)); // 'Menyenangkan!'
+
+    // .split(separator): Memecah string menjadi array berdasarkan separator
+    const daftarBuah = 'Apel, Mangga, Jeruk';
+    console.log('Split "Apel, Mangga, Jeruk":', daftarBuah.split(', ')); // ['Apel', 'Mangga', 'Jeruk']
+
+    // .replace(searchValue, newValue): Mengganti substring pertama yang ditemukan
+    const kalimatBaru = 'Saya suka kopi. Saya suka teh.';
+    console.log('Replace pertama:', kalimatBaru.replace('suka', 'gemar')); // 'Saya gemar kopi. Saya suka teh.'
+    // Untuk mengganti semua, gunakan regex
+    console.log('Replace semua:', kalimatBaru.replace(/suka/g, 'gemar')); // 'Saya gemar kopi. Saya gemar teh.'
+    console.groupEnd();
+
+
+    // --- 4. STRING IMMUTABILITY (TIDAK BISA DIUBAH) ---
+    // PENTING: Metode string TIDAK mengubah string aslinya. Mereka selalu mengembalikan string BARU.
+
+    console.group('\n--- Konsep Immutability ---');
+    let pesan = 'halo dunia';
+    console.log('Pesan awal:', pesan);
+    pesan.toUpperCase(); // Ini tidak mengubah `pesan`
+    console.log('Setelah .toUpperCase() (tanpa assignment):', pesan); // Masih 'halo dunia'
+
+    // Cara yang benar adalah dengan menugaskan hasilnya ke variabel baru atau variabel yang sama
+    pesan = pesan.toUpperCase();
+    console.log('Setelah di-assign ke variabel:', pesan); // Sekarang 'HALO DUNIA'
+    console.groupEnd();
+
+
+    // --- 5. CONTOH PRAKTIS: MEMBERSIHKAN INPUT USER ---
+    console.group('\n--- Contoh Praktis ---');
+    function formatUsername(input) {
+      // 1. Trim spasi di awal/akhir
+      // 2. Ubah ke huruf kecil
+      // 3. Ganti spasi dengan underscore (_)
+      return input.trim().toLowerCase().replace(/ /g, '_');
+    }
+
+    const userInput1 = '  Admin Super  ';
+    const userInput2 = 'User Biasa';
+
+    console.log(`Input "userInput1" menjadi:`, formatUsername(userInput1));
+    console.log(`Input "userInput2" menjadi:`, formatUsername(userInput2));
+    console.groupEnd();
+
+
+    // --- KESIMPULAN ---
+    // String adalah tipe data fundamental. Kuasai metode-metodenya untuk memanipulasi teks dengan efisien.
+  </script>
+</body>
+
 </html>
