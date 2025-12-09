@@ -1,19 +1,122 @@
 <script>
 
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+    // =======================================================
+    // Snippet: Method-Method Javascript Yang Memudahkan Hidup Kita
+    // Cara: Buka Developer Tools (F12) dan lihat tab Console.
+    // =======================================================
 
-    let namaSaya = "audyari wiyono"
 
-    console.log(namaSaya.toUpperCase())
+    console.clear();
+    console.log('%c--- Method & Sintaks JavaScript Pembaras Hidup ---', 'font-weight: bold; color: #007ACC; font-size: 16px;');
 
-    console.log(namaSaya)
+    // --- DATA CONTOH ---
+    const users = [
+        { id: 1, name: 'Alice', isActive: true, role: 'admin' },
+        { id: 2, name: 'Bob', isActive: false, role: 'user' },
+        { id: 3, name: 'Charlie', isActive: true, role: 'user' }
+    ];
+    const numbers = [10, 5, 100, 25, 5];
 
-    console.log("menggunakkan toLowerCase = "+ namaSaya.toLowerCase())
+    // --- 1. ARRAY METHODS YANG WAJIB DIKUASAI ---
+    // Ini menggantikan loop `for` yang panjang dan bertele-tele.
 
-    let dataNama = "  audyari wiyono"
+    console.group('\n1. Array Methods');
 
-    console.log(dataNama.trim())
+    // .map(): Membuat array BARU dengan hasil transformasi setiap elemen.
+    // Sangat berguna untuk mengambil properti tertentu dari array objek.
+    const userNames = users.map(user => user.name);
+    console.log('.map() -> Daftar Nama:', userNames);
 
-    console.log(dataNama.trim().toUpperCase())
+    console.log("==============================================");
+
+    // .filter(): Membuat array BARU yang berisi elemen-elemen yang lolos kriteria.
+    const activeUsers = users.filter(user => user.isActive);
+    console.log('.filter() -> User Aktif:', activeUsers);
+
+    console.log("==============================================");
+
+    // .find(): Mengembalikan elemen PERTAMA yang ditemukan.
+    const userBob = users.find(user => user.name === 'Bob');
+    console.log('.find() -> Cari Bob:', userBob);
+
+    console.log("==============================================");
+
+    // .reduce(): "Menggulung" array menjadi satu nilai (bisa number, object, atau array).
+    // Contoh: menjumlahkan semua angka.
+    const totalNumbers = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    console.log('.reduce() -> Total Angka:', totalNumbers);
+
+    console.log("==============================================");
+
+    // .includes(): Cek sederhana apakah array mengandung nilai tertentu (mengembalikan true/false).
+    console.log('.includes() -> Ada angka 100?', numbers.includes(100));
+    console.log('.includes() -> Ada angka 99?', numbers.includes(99));
+
+    console.log("==============================================");
+    console.groupEnd();
+
+
+    // --- 2. OBJECT METHODS & SPREAD SYNTAX ---
+    // Memudahkan untuk memanipulasi objek.
+
+    console.group('\n2. Object Methods & Spread Syntax');
+    const sampleUser = users[0];
+
+    // Object.keys(), Object.values(), Object.entries()
+    console.log('Object.keys(sampleUser):', Object.keys(sampleUser));
+    console.log("==============================================");
+    console.log('Object.values(sampleUser):', Object.values(sampleUser));
+    console.log("==============================================");
+    console.log('Object.entries(sampleUser):', Object.entries(sampleUser));
+
+    console.log("==============================================");
+
+    // Spread Syntax (...) untuk Object: Menyalin atau menggabungkan objek dengan mudah.
+    // Ini cara yang aman untuk membuat salinan atau update objek tanpa mengubah aslinya (immutable).
+    const updatedUser = { ...sampleUser, lastLogin: '2023-10-27' }; // Menambah properti baru
+    const roleChangedUser = { ...sampleUser, role: 'superadmin' }; // Mengubah properti yang ada
+    console.log('User asli:', sampleUser);
+    console.log('User setelah ditambah properti:', updatedUser);
+    console.log('User setelah role diubah:', roleChangedUser);
+    console.groupEnd();
+
+    console.log("==============================================");
+
+    // --- 3. MODERN SYNTAX: OPTIONAL CHAINING (?.) & NULLISH COALESCING (??) ---
+    // Dua sintaks ini adalah penyelamat untuk mencegah error dan memberikan nilai default.
+
+    console.group('\n3. Modern Syntax: ?. dan ??');
+    const userWithAddress = { ...sampleUser, address: { city: 'Jakarta', zip: '12345' } };
+    const userWithoutAddress = { name: 'Diana' }; // Tidak punya properti 'address'
+
+    console.log("==============================================");
+
+    // Optional Chaining (?.): Mengakses properti bersarang dengan aman.
+    // Jika `address` tidak ada, kode tidak akan error, tapi mengembalikan `undefined`.
+    console.log('Alamat userWithAddress:', userWithAddress.address?.city); // 'Jakarta'
+    console.log('Alamat userWithoutAddress:', userWithoutAddress.address?.city); // undefined (TANPA ERROR!)
+    // Tanpa ?. akan error: Cannot read properties of undefined (reading 'city')
+
+    console.log("==============================================");
+
+    // Nullish Coalescing (??): Memberikan nilai default HANYA untuk `null` atau `undefined`.
+    // Ini lebih aman dari `||` karena `||` juga akan memberikan default untuk nilai falsy lainnya (0, '', false).
+    const userRole = userWithoutAddress.role ?? 'Guest';
+    const userIsActive = userWithoutAddress.isActive ?? false; // Jika `isActive` tidak ada, default-nya false
+    const productStock = 0; // Anggap saja stok 0
+    const displayStock = productStock ?? 'Kosong'; // Hasilnya 0, karena 0 bukan null/undefined
+    // const displayStockSalah = productStock || 'Kosong'; // Hasilnya 'Kosong', ini yang sering menyebabkan bug!
+    console.log('Role userWithoutAddress:', userRole);
+    console.log('Display stok (benar):', displayStock);
+    console.groupEnd();
+
+    console.log("==============================================");
+
+    // --- KESIMPULAN ---
+    console.log('%c--- Kesimpulan ---', 'font-weight: bold; color: #28a745; font-size: 16px;');
+    console.log('1. Kuasai Array Methods (.map, .filter, .reduce) untuk manipulasi data.');
+    console.log('2. Gunakan Spread Syntax (...) untuk manipulasi objek yang aman.');
+    console.log('3. Manfaatkan Optional Chaining (?.) dan Nullish Coalescing (??) untuk kode yang lebih robust.');
+    console.log('4. Ini adalah fondasi untuk menulis JavaScript modern yang bersih dan efisien.');
 
 </script>
