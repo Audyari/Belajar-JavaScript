@@ -1,11 +1,126 @@
 <script>
-    let tipeData = true
- 
-    console.log( typeof(tipeData))
+    // =======================================================
+    // Snippet: Tipe Data Boolean di JavaScript
+    // Cara: Buka Developer Tools (F12) dan lihat tab Console.
+    // =======================================================
 
-    const login = true
 
-    console.log(login)
+    console.clear(); // Membersihkan console agar lebih rapi
 
-    let Aktif =  false
+    // --- 1. DASAR-DASAR BOOLEAN ---
+    // Boolean adalah tipe data yang hanya memiliki dua nilai: true (benar) dan false (salah).
+    // Digunakan untuk pengambilan keputusan (logika).
+
+    let sudahLogin = true;
+    let isPremiumUser = false;
+
+    console.log('Sudah login?', sudahLogin, '| Tipe:', typeof sudahLogin);
+    console.log('User premium?', isPremiumUser, '| Tipe:', typeof isPremiumUser);
+
+
+    // --- 2. KONSEP KRUSIAL: TRUTHY DAN FALSY ---
+    // Dalam JavaScript, nilai selain `true` dan `false` bisa dievaluasi sebagai boolean.
+    // Nilai yang dianggap `false` disebut Falsy. Sisanya adalah Truthy.
+
+    // --- DAFTAR NILAI FALSY (HANYA INI!) ---
+    const nilaiFalsy = [
+        false,
+        0, // Angka nol
+        -0, // Angka nol negatif
+        0n, // BigInt nol
+        "", // String kosong
+        ``, // Template literal kosong
+        null,
+        undefined,
+        NaN // Not a Number
+    ];
+
+    console.group('\n--- Menguji Nilai Falsy ---');
+    nilaiFalsy.forEach((nilai, index) => {
+        if (nilai) {
+            console.log(`${index}. Nilai ${JSON.stringify(nilai)} dianggap TRUE`);
+        } else {
+            console.log(`${index}. Nilai ${JSON.stringify(nilai)} dianggap FALSE`);
+        }
+    });
+    console.groupEnd();
+
+    // --- CONTOH NILAI TRUTHY ---
+    console.group('\n--- Menguji Nilai Truthy ---');
+    const nilaiTruthy = ["hello", 42, -1, [], {}, [0], { a: 1 }, Infinity];
+    nilaiTruthy.forEach((nilai, index) => {
+        if (nilai) {
+            console.log(`index. Nilai ${JSON.stringify(nilai)} dianggap TRUE`);
+        }
+    });
+    console.groupEnd();
+
+
+    // --- 3. KONVERSI EKSPLISIT KE BOOLEAN ---
+    // Kadang kita perlu secara eksplisit mengubah tipe data menjadi boolean.
+
+    console.group('\n--- Konversi Eksplisit ---');
+    let nama = 'Budi';
+    let kosong = '';
+
+    // Cara 1: Menggunakan fungsi Boolean()
+    console.log(`Boolean('nama') =`, Boolean(nama)); // true
+    console.log(`Boolean('kosong') =`, Boolean(kosong)); // false
+
+    // Cara 2: Menggunakan Double Negation (!!)
+    // Ini adalah trik umum untuk mendapatkan nilai boolean dari sebuah nilai.
+    console.log(`!!'nama' =`, !!nama); // true
+    console.log(`!!'kosong' =`, !!kosong); // false
+    console.log(`!!null =`, !!null); // false
+    console.log(`!!0 =`, !!0); // false
+    console.groupEnd();
+
+
+    // --- 4. OPERATOR LOGIKA ---
+    console.group('\n--- Operator Logika ---');
+    let a = true, b = false;
+
+    // AND (&&): Hasilnya true hanya jika kedua nilai true
+    console.log(`true && false =`, a && b); // false
+    console.log(`true && true =`, a && true); // true
+
+    // OR (||): Hasilnya true jika salah satu atau kedua nilai true
+    console.log(`true || false =`, a || b); // true
+    console.log(`false || false =`, b || false); // false
+
+    // NOT (!): Membalikkan nilai boolean
+    console.log(`!true =`, !a); // false
+    console.log(`!false =`, !b); // true
+    console.groupEnd();
+
+
+    // --- 5. CONTOH PRAKTIS ---
+    console.group('\n--- Contoh Praktis ---');
+
+    // Contoh 1: Memberikan Nilai Default dengan OR (||)
+    // Jika `userRole` kosong (falsy), gunakan 'Guest' sebagai nilai default.
+    function sapaan(userRole) {
+        const peran = userRole || 'Guest';
+        return `Halo, peran!`;
+    }
+    console.log(sapaan('Admin')); // Output: Halo, Admin!
+    console.log(sapaan('')); // Output: Halo, Guest! (karena '' adalah falsy)
+    console.log(sapaan(null)); // Output: Halo, Guest! (karena null adalah falsy)
+
+    // Contoh 2: Akses Properti yang Aman dengan AND (&&)
+    // Mencegah error jika objek tidak ada.
+    const user = { name: 'Charlie' };
+    // const user = null; // Coba uncomment baris ini
+
+    if (user && user.profile) {
+        console.log('Bio:', user.profile.bio);
+    } else {
+        console.log('User atau profil tidak ditemukan.');
+    }
+    console.groupEnd();
+
+
+    // --- KESIMPULAN ---
+    // Boolean adalah fondasi dari logika di JavaScript.
+    // Memahami Truthy/Falsy adalah kunci untuk menulis kode yang ringkas dan idiomatik.
 </script>
