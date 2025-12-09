@@ -1,0 +1,52 @@
+<!-- Flex Container -->
+<div class="flex-container">
+    <!-- Item ini akan membesar untuk mengisi ruang kosong -->
+    <div class="flex-item item-grow">Item 1 (flex: 1)</div>
+
+    <!-- Item ini akan membesar 2x lipat dari Item 1 -->
+    <div class="flex-item item-grow-2x">Item 2 (flex: 2)</div>
+
+    <!-- Item ini ukurannya tetap, tidak akan membesar atau mengecil -->
+    <div class="flex-item item-fixed">Item 3 (flex: 0 0 150px)</div>
+</div>
+
+<style>
+    .flex-container {
+        display: flex;
+        width: 100%;
+        /* Coba ubah lebar jendela browser untuk melihat efeknya */
+        background-color: #e9ecef;
+        border: 2px dashed #ced4da;
+        padding: 10px;
+    }
+
+    .flex-item {
+        /* Style umum untuk semua item */
+        height: 80px;
+        color: white;
+        margin: 5px;
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        font-weight: bold;
+    }
+
+    .item-grow {
+        /* flex: <grow> <shrink> <basis> */
+        flex: 1 1 auto;
+        /* Akan membesar (grow=1), bisa mengecil (shrink=1), ukuran dasar otomatis */
+        background-color: #007bff;
+    }
+
+    .item-grow-2x {
+        flex: 2 1 auto;
+        /* Akan membesar 2x lipat (grow=2) */
+        background-color: #6f42c1;
+    }
+
+    .item-fixed {
+        flex: 0 0 150px;
+        /* Tidak akan membesar/mengecil, ukuran tetap 150px */
+        background-color: #28a745;
+    }
+</style>

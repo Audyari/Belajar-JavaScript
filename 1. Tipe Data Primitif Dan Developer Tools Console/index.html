@@ -1,3 +1,112 @@
-<script>
-    console.log(1+1)
-</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // =======================================================
+        // Snippet: Kata Kunci `const` dan `var` untuk Variabel
+        // Cara: Buka Developer Tools (F12) dan lihat tab Console.
+        // =======================================================
+
+
+        console.clear(); // Membersihkan console agar lebih rapi
+
+        // --- 1. KATA KUNCI `const` (KONSTANTA) ---
+        // Digunakan untuk variabel yang nilainya TIDAK AKAN DIUBAH setelah dideklarasikan.
+        // Ini adalah pilihan default dan teraman untuk mendeklarasikan variabel.
+
+        const PHI = 3.14;
+        console.log('Nilai PHI:', PHI);
+        // PHI = 3.14159; // !!! ERROR !!! TypeError: Assignment to constant variable.
+
+        // --- PENTING: `const` dan Object/Array ---
+        // `const` melarang perubahan *referensi*, bukan perubahan *isi*.
+        const daftarBelanja = ['susu', 'roti'];
+        console.log('\nDaftar belanja awal:', daftarBelanja);
+        // Ini DIPERBOLEHKAN (mengubah isi array)
+        daftarBelanja.push('telur');
+        console.log('Daftar belanja setelah push:', daftarBelanja);
+        // Ini TIDAK DIPERBOLEHKAN (mengubah referensi array)
+        // daftarBelanja = ['kopi', 'gula']; // !!! ERROR !!!
+
+        // `const` memiliki Block Scope, sama seperti `let`.
+        if (true) {
+            const pesan = 'Halo';
+        }
+        // console.log(pesan); // !!! ERROR !!! ReferenceError: pesan is not defined.
+
+
+        // --- 2. KATA KUNCI `var` (CARA LAMA) ---
+        // Ini adalah cara mendeklarasikan variabel di JavaScript sebelum ES6 (2015).
+        // Penggunaannya tidak lagi direkomendasikan karena memiliki perilaku yang tidak terduga.
+
+        // --- Perbedaan 1: SCOPE (Function Scope vs Block Scope) ---
+        // `var` hanya mengenal function scope, bukan block scope.
+        function testVarScope() {
+            if (true) {
+                var messageVar = 'Saya ada di dalam blok if';
+            }
+            // Variabel `messageVar` masih bisa diakses di luar blok if (masih di dalam fungsi yang sama)
+            console.log('\nDi luar blok if, di dalam fungsi:', messageVar);
+        }
+        testVarScope();
+        // console.log(messageVar); // !!! ERROR !!! ReferenceError, karena `var` tidak keluar dari function scope.
+
+        // --- Perbedaan 2: HOISTING ---
+        // Deklarasi `var` diangkat ke atas dan diinisialisasi dengan `undefined`.
+        console.log('\nNilai kota sebelum deklarasi:', kota); // Output: undefined (bukan error!)
+        var kota = 'Bandung';
+        console.log('Nilai kota setelah deklarasi:', kota);
+
+        // --- Perbedaan 3: RE-DECLARATION ---
+        // `var` memungkinkan deklarasi ulang variabel di scope yang sama. Ini berbahaya!
+        var nama = 'Budi';
+        var nama = 'Ani'; // Tidak ada error, nama 'Budi' tertimpa
+        console.log('\nNama setelah deklarasi ulang:', nama);
+
+
+        // --- 3. TABEL PERBANDINGAN LENGKAP ---
+        console.group('\n--- TABEL PERBANDINGAN: let vs const vs var ---');
+        console.log('1. SCOPE');
+        console.log('  - let   : Block Scope { ... }');
+        console.log('  - const : Block Scope { ... }');
+        console.log('  - var   : Function Scope function() { ... }');
+
+        console.log('\n2. REASSIGNMENT (Mengubah Nilai)');
+        let x = 1; x = 2; console.log('  - let   : Bisa (', x, ')');
+        const y = 1; // y = 2; // Error. console.log('  - const : Tidak Bisa');
+        var z = 1; z = 2; console.log('  - var   : Bisa (', z, ')');
+
+        console.log('\n3. HOISTING (Akses Sebelum Deklarasi)');
+        // console.log(a); // ReferenceError (TDZ). console.log('  - let   : ReferenceError (TDZ)');
+        // console.log(b); // ReferenceError (TDZ). console.log('  - const : ReferenceError (TDZ)');
+        var c; console.log('  - var   : Undefined (', c, ')');
+
+        console.log('\n4. RE-DECLARATION (Deklarasi Ulang di Scope Sama)');
+        let a1 = 1; // let a1 = 2; // Error. console.log('  - let   : Tidak Bisa');
+        const b1 = 1; // const b1 = 2; // Error. console.log('  - const : Tidak Bisa');
+        var c1 = 1; var c1 = 2; console.log('  - var   : Bisa (', c1, ')');
+        console.groupEnd();
+
+
+        // --- 4. KESIMPULAN DAN REKOMENDASI MODERN ---
+        console.group('\n--- KESIMPULAN: Kapan Menggunakan Yang Mana? ---');
+        console.log('1. Gunakan `const` secara DEFAULT.');
+        console.log('   Ini mencegah perubahan nilai yang tidak disengaja dan membuat kode lebih aman.');
+
+        console.log('\n2. Gunakan `let` HANYA jika kamu yakin nilainya akan berubah.');
+        console.log('   Contoh: counter loop, nilai yang akan di-update berdasarkan perhitungan.');
+
+        console.log('\n3. HINDARI `var` dalam kode JavaScript modern (ES6+).');
+        console.log('   Gunakan hanya jika kamu harus memelihara kode lama yang tidak bisa diubah.');
+        console.groupEnd();
+    </script>
+</body>
+
+</html>

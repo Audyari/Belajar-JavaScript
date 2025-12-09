@@ -1,7 +1,19 @@
 <script>
 
-const testDataArrays = ["AUDY","BUDI","CANDRA"];
+const testDataArrays = ["BUDI","CANDRA","AUDY"];
+
+console.log(testDataArrays);
+
 const hasil = testDataArrays.map(testDataArray => testDataArray)
 
     console.log(hasil); // Output: "Hello, Alice!"
+
+const timDenganTugas = ["Andi", "Budi", "Cici", "Dedi"].map(anggota => ({
+  nama: anggota,
+  tugas: "Fokus kerja 25 menit!",
+  timer: "⏰"
+}));
+
+console.log(timDenganTugas);
+
 </script>
