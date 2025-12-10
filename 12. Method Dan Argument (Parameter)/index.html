@@ -1,13 +1,14 @@
 <script>
-    let dataNama = "Audyari Wiyono"
 
-    let cariData = dataNama.indexOf('y')
+    let teks = "Hello World";
 
-    console.log(cariData)
+    // .indexOf(substring): Mengembalikan indeks pertama kali substring ditemukan (jika tidak ada, -1)
+    console.log('Indeks "`":', teks.indexOf('World')); // 6
+    console.log('Indeks "python":', teks.indexOf('python')); // -1
 
-    console.log(dataNama.slice(3,5))
-    
-    console.log(dataNama.slice(7))
+    // .slice(start, end): Mengambil bagian string dari indeks start hingga sebelum end
+    console.log('Slice [0, 7]:', teks.slice(0, 7)); // '  Belaj'
+    console.log('Slice [-13, -1]:', teks.slice(-13, -1)); // 'Menyenangkan!'
 
-    console.log( dataNama.replace("Audy","Asik "))
+
 </script>
